@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.example.studybookformdk0103"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.studybookformdk0103"
