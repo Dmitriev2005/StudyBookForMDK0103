@@ -4,15 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.ListView
 import android.widget.TextView
-
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class GeneralActivity : AppCompatActivity() {
@@ -36,12 +37,17 @@ class GeneralActivity : AppCompatActivity() {
             }
 
         }
+        var nav = ForBottomNavigation(this)
+        nav.bottomMenu()
+
+
     }
     private fun load2(nameHtml:String){
         val intent = Intent(this,ContentTheoryActivity::class.java)
         intent.putExtra("current_name",nameHtml)
         startActivity(intent)
     }
+
 
 }
 class CustomAdapter(private val context: Context, private val itemList: List<BaseItem>) : BaseAdapter() {

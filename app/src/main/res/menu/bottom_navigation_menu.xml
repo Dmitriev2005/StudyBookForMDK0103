@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/section_theory"
+        android:title="Теория"
+        android:icon="@drawable/section_theory" />
+    <item
+        android:id="@+id/section_practicle"
+        android:title="Практика"
+        android:icon="@drawable/section_practicle"/>
+    <item
+        android:id="@+id/section_test"
+        android:title="Тест"
+        android:icon="@drawable/section_test"
+        />
+</menu>

@@ -1,12 +1,19 @@
-
+.wraper{
+	background-color: #A9CDDD;
+}
 .content{
 	display: inline-block;
-	background-color: #A9CDDD;
+	margin-left: 5%;
+	max-width: 90%;
+	margin-bottom: 10%;
 }
 p{
 	text-indent:  1%;
 }
 h1{
-
 	font-weight: 600;
+}
+img{
+	max-width: 50%;
+	max-height: 50%;
 }

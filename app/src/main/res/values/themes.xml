@@ -1,8 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.StudyBookForMDK0103" parent="Theme.AppCompat.Light">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Base.Theme.StudyBookForMDK0103" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
     </style>
 
     <style name="Theme.StudyBookForMDK0103" parent="Base.Theme.StudyBookForMDK0103" />
