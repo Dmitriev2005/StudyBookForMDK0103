@@ -6,6 +6,7 @@
 	margin-left: 5%;
 	max-width: 90%;
 	margin-bottom: 10%;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 p{
 	text-indent:  1%;
@@ -16,4 +17,5 @@ h1{
 img{
 	max-width: 50%;
 	max-height: 50%;
+	
 }

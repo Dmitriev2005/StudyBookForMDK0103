@@ -13,8 +13,7 @@ class ContentTheoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_content_theory)
         val web = findViewById<WebView>(R.id.web)
         web.webViewClient = WebViewClient()
-        web.loadUrl("file:///android_res/raw/t1.html")
-        var per = getIntent().getStringExtra("current_name")
+        web.loadUrl("file:///android_res/raw/"+getIntent().getStringExtra("current_name"))
         web.settings.javaScriptEnabled = true
     }
 

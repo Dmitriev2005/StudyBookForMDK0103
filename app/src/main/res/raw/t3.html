@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="color.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="content">
+            <h1>TextView</h1>
+            <p>
+                Компонент TextView предназначен для отображения текста без возможности редактирования его пользователем, 
+                что видно из его названия (Text - текст, view - просмотр).
+            </p>
+            <p>
+                Находится в разделе <strong>Texts</strong>.
+            </p>
+            <p>
+                <strong>TextView</strong> - один из самых используемых компонентов. С его помощью пользователю удобнее ориентироваться в программе. 
+                По сути, это как таблички: Руками не трогать, По газону не ходить, Вход с собаками воспрещен, Часы работы с 9.00 до 18.00 и т.д., 
+                и служит для представления пользователю описательного текста.
+            </p>
+            <p>
+                Для отображения текста в <strong>TextView</strong> в файле разметки используется атрибут <strong>android:text</strong>, например:
+            </p>
+            <p>
+                <i>android:text="@string/hello"</i>
+            </p>
+            <h2>Программная установка текста</h2>
+            <p>
+                Программно текст можно задать методом <strong>setText()</strong>:
+            </p>
+
+            <i>
+                // Инициализируем компонент 
+                <br>
+                TextView textView = findViewById(R.id.textView);
+                <br>
+                // задаём текст
+                <br>
+                textView.setText("Hello Kitty!");
+                <br>
+                // или с использованием текстовых ресурсов
+                <br>
+                textView.setText(R.string.hello);
+            </i>
+            <h2>Атрибуты</h2>
+            <p>
+                <strong>android:textsize</strong> размер текста. При установке размера текста используется несколько единиц измерения: px (пиксели), dp, sp, in (дюймы), pt, mm. 
+                Для текстов рекомендуется использовать <strong>sp: android:textSize="48sp"</strong>, аналог - метод <strong>setTextSize()</strong> 
+            </p>
+            <p>
+                <strong>android:textstyle</strong>
+                стиль текста. Используются константы: <strong>normal, bold, italic.</strong> Например, <strong>android:textStyle="bold"</strong> выводит текст жирным
+            </p>
+            <p>
+                <strong>android:textcolor</strong> цвет текста. Используются четыре формата в шестнадцатеричной кодировке: #RGB; #ARGB; #RRGGBB; #AARRGGBB, 
+                где R, G, B — соответствующий цвет, А — прозрачность (alpha-канал). Значение А, установленное в 0, означает прозрачность 100%.
+            </p>
+            <p>
+                Для всех вышеперечисленных атрибутов в классе <strong>TextView</strong> есть соответствующие методы для чтения или задания соответствующих свойств.
+            </p>
+            <p>
+                Программно установим размеры текста при помощи <strong>setTextSize()</strong> с различными единицами измерения.
+            </p>
+            <i>
+                // 20 DIP (Device Independent Pixels)
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+                <br>
+                // 0.5 inch
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_IN, 0.5f);
+                <br>
+                // 10 millimeter
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, 10);
+                <br>
+                // 30 points
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_PT, 30);
+                <br>
+                // 30 raw pixels
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, 30);
+                <br>
+                // 30 scaled pixels
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
+
+            </i>
+            <p>
+                По умолчанию у компонентов <strong>TextView</strong> отсутствует фоновый цвет. Чтобы задать цвет, укажите значение <strong>Drawable</strong> для атрибута <strong>android:background</strong>. 
+                В качестве значения <strong>Drawable</strong> может использоваться изображение или XML-представление фигуры, включающий ресурс <strong>Drawable</strong> (поместить в папку <strong>res/drawable</strong>).
+            </p>
+            <h2>Программная установка фона</h2>
+            <p>
+                В некоторых случаях программисты из-за невнимательности неправильно меняют фон элемента программным способом и удивляются, почему ничего не работает.
+            </p>
+            <p>
+                Предположим, у вас определён в ресурсах зелёный цвет:
+            </p>
+            <i>
+                &lt;color name="tvBackground"&gt;#337700&lt;/color&gt;
+            </i>
+            <p>
+                Следующий код будет ошибочным:
+            </p>
+            <i>
+                textview.setBackgroundColor(R.color.tvBackground); // не работает
+            </i>
+            <p>
+                Нужно так (два варианта):
+            </p>
+            <i>
+                textView.setBackgroundResource(R.color.tvBackground); // первый вариант
+                <br>
+                textView.setBackgroundColor(getResources().getColor(R.color.tvBackground)); // второй вариант
+            </i>
+            <h2>Реагируем на событие onClick</h2>
+            <p>
+                Если вы хотите, чтобы <strong>TextView</strong> обрабатывал нажатия (атрибут <strong>android:onClick</strong>), 
+                то не забывайте также использовать в связке атрибут <strong>android:clickable="true"</strong>. Иначе работать не будет!
+            </p>
+            <h2>Увеличиваем интервалы между строками</h2>
+            <p>
+                Вы можете управлять интервалом между соседними строчками текста через атрибут <strong>android:lineSpacingMultiplier</strong>, который является множителем. 
+                Установите дробное значение меньше единицы, чтобы сократить интервал или больше единицы, чтобы увеличить интервал между строками.
+            </p>
+            <i>android:lineSpacingMultiplier="0.8"</i>
+            <h2>Создание ссылок автоматом</h2>
+            <p>
+                У <strong>TextView</strong> есть ещё два интересных свойства <strong>Auto link</strong> (атрибут <strong>autoLink</strong>) и <strong>Links clickable</strong>strong> (атрибут <strong>linksClickable</strong>), которые позволяют автоматически создавать ссылки из текста.
+            </p>
+            <i>
+                &lt;TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:autoLink="web"
+                    android:linksClickable="true"
+                    android:text="Мой адрес: developer.alexanderklimov.ru" /&gt;
+            </i>
+        </div>
+    </div>
+</body>
+</html>

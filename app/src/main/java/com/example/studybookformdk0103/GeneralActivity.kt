@@ -22,10 +22,33 @@ class GeneralActivity : AppCompatActivity() {
         setContentView(R.layout.activity_general)
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
-        val exampleFragment = FragmentTheory() // Создание экземпляра фрагмента
+        val exampleFragment = FragmentTheory()
         fragmentTransaction.replace(R.id.frame_layout, exampleFragment)
         fragmentTransaction.commit()
 
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.section_theory -> {
+                    bottomNavigationView.menu.findItem(R.id.section_theory).isChecked = true;
+                    //Toast.makeText(this,"",Toast.LENGTH_SHORT).show()
+                    true
+                }
+
+                R.id.section_practicle -> {
+                    bottomNavigationView.menu.findItem(R.id.section_practicle).isChecked = true;
+                    true
+                }
+
+                R.id.section_test -> {
+
+                    true
+                }
+
+
+                else -> false
+            }
+        }
 //        var listView = findViewById<ListView>(R.id.listView);
 //        var itemList = listOf<BaseItem>(
 //            BaseItem(R.drawable.item_list,"1. Знакомство с интерфейсом android studio"),

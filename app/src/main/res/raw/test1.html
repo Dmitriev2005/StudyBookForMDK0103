@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="color.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="content">
+            <h1>TextView</h1>
+            <div class="question__block">
+                <h2>1. Для чего предназначен компонент TextView?</h2>
+                <div class="answer">
+                    <input type="radio" name="group1" id="group1_answer1"/>
+                    <label for="group1_answer1">Для отправки почты</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer2"/>
+                    <label for="group1_answer2">Для отображения текста</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer3"/>
+                    <label for="group1_answer3">Этот компонент служит контейнером для других компонетов разметки</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer4"/>
+                    <label for="group1_answer4">Только для вывода ссылок</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>2. С помощью чего можно задать текст?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group2" id="group2_answer1"/>
+                    <label for="group2_answer1">setText()</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer2"/>
+                    <label for="group2_answer2">newText()</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer3"/>
+                    <label for="group2_answer3">myText()</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer4"/>
+                    <label for="group2_answer4">thisText()</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>3. С помощью чего можно задать размер текста?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group3" id="group3_answer1"/>
+                    <label for="group2_answer1">inSize()</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer2"/>
+                    <label for="group2_answer2">newSize()</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer3"/>
+                    <label for="group2_answer3">giveSizeText()</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer4"/>
+                    <label for="group2_answer4">setTextSize() </label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>4. Можно лм программно установить фон для TextView?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group4" id="group4_answer1"/>
+                    <label for="group2_answer1">Можно, но только для ссылок</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer2"/>
+                    <label for="group2_answer2">Можно</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer3"/>
+                    <label for="group2_answer3">Можно, но придется задействовать другой компонент</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer4"/>
+                    <label for="group2_answer4">Нельзя</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>5. TextView обрабатывает событие click (аттрибут android:onClick)?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group5" id="group5_answer1"/>
+                    <label for="group2_answer1">Да, но в разметки у TextView должен быть аттребут android:clickable="true"</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer2"/>
+                    <label for="group2_answer2">Да</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer3"/>
+                    <label for="group2_answer3">Нужно подключить специальный плагин</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer4"/>
+                    <label for="group2_answer4">Нет</label>
+                </div>
+            </div>
+            <input type="button" value="Проверить" id="btnRes"/>
+            
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import {answerChecker, generateResBlock} from './test_functions.js';
+        const btnRes = document.getElementById("btnRes");
+       
+        btnRes.onclick = () =>{
+
+           const group1 = document.getElementsByName("group1");
+           const group2 = document.getElementsByName("group2");
+           const group3 = document.getElementsByName("group3");
+           const group4 = document.getElementsByName("group4");
+           const group5 = document.getElementsByName("group5");
+           
+           const combined = [group1, group2,group3,group4,group5];
+        
+           const trueAnswers = [
+            {name:"group1", idTrue:"group1_answer2"},
+            {name:"group2", idTrue:"group2_answer1"},
+            {name:"group3", idTrue:"group3_answer4"},
+            {name:"group4", idTrue:"group4_answer2"},
+            {name:"group5", idTrue:"group5_answer1"}
+            ]
+
+           generateResBlock(answerChecker(combined,trueAnswers),combined.length,btnRes);
+           
+        }
+        
+        
+    </script>
+</body>
+</html>
