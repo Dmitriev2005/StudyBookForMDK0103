@@ -1,33 +1,19 @@
 package com.example.studybookformdk0103
 
 import android.content.Intent
-import android.nfc.Tag
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import kotlin.math.log
 
-class FragmentTheory : Fragment() {
+class FragmentTest : Fragment() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        var listView = view?.findViewById<ListView>(R.id.listView);
-//        var itemList = listOf<BaseItem>(
-//            BaseItem(R.drawable.item_list,"1. Знакомство с интерфейсом android studio"),
-//            BaseItem(R.drawable.item_list,"2. TextView")
-//        )
-//
-//
-//        val adapter = CustomAdapter(requireContext(), itemList)
-//        listView?.adapter = adapter
     }
 
     override fun onCreateView(
@@ -38,8 +24,7 @@ class FragmentTheory : Fragment() {
         val listView = view.findViewById<ListView>(R.id.listView)
 
         val itemList = listOf<BaseItem>(
-            BaseItem(R.drawable.item_list, "1. Знакомство с интерфейсом android studio"),
-            BaseItem(R.drawable.item_list, "2. TextView")
+            BaseItem(R.drawable.item_list, "1. TextView (Тестирование)"),
         )
 
         val adapter = CustomAdapter(requireContext(), itemList)
@@ -47,12 +32,10 @@ class FragmentTheory : Fragment() {
         listView.setOnItemClickListener{
                 parent, view, position, id ->
             when(position){
-                0->load("t1.html")
-                1->load("t2.html")
+                0->load("test1.html")
             }
 
         }
-
         return view
     }
     private fun load(nameHtml:String){
@@ -62,7 +45,6 @@ class FragmentTheory : Fragment() {
         fragment.arguments = args
         fragmentManager?.beginTransaction()?.replace(R.id.frame_layout,fragment)?.commit()
     }
-
 
 
 }

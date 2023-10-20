@@ -90,26 +90,69 @@
                     <label for="group2_answer4">Нет</label>
                 </div>
             </div>
-            <input type="button" value="Проверить" id="btnRes"/>
+            <div id="result">
+                Проверить
+            </div>
             
             </div>
         </div>
     </div>
     <script type="module">
-        import {answerChecker, generateResBlock} from './test_functions.js';
-        const btnRes = document.getElementById("btnRes");
+        //import {answerChecker, generateResBlock} from './test_functions.js';
+        const result = document.getElementById("result");
        
-        btnRes.onclick = () =>{
-
-           const group1 = document.getElementsByName("group1");
-           const group2 = document.getElementsByName("group2");
-           const group3 = document.getElementsByName("group3");
-           const group4 = document.getElementsByName("group4");
-           const group5 = document.getElementsByName("group5");
-           
-           const combined = [group1, group2,group3,group4,group5];
+        const answerChecker = (group,trueAnswers)=>{
+            let result = 0;
         
-           const trueAnswers = [
+            for (let i = 0; i < group.length; i++) {
+                for(let j = 0; j< group[i].length; j++){
+                    if(group[i][j].checked && group[i][j].id===trueAnswers[i].idTrue)
+                        result++;
+                }
+                
+            }
+            return result;
+        }
+        const generateResBlock = (countTrue,countMax,result)=>{
+            const restart = document.createElement("div");
+            
+            restart.addEventListener("click",function(){location.reload()})
+        
+            const resultMes = document.createElement("div");
+            if(countTrue===countMax){
+                resultMes.style.border  = "solid 5px #8CEC8A"
+                resultMes.style.backgroundColor = "#2EA91A";
+            }
+            else{
+                resultMes.style.border  = "solid 5% #FD8F8F"
+                resultMes.style.backgroundColor = "#ED3333";
+            }
+            resultMes.style.fontWeight = "bold";
+            resultMes.style.padding = "1%";
+            resultMes.textContent = `Всего верных ответов ${countTrue} из ${countMax}`;
+            resultMes.style.marginTop = "5%";
+
+            restart.id = "btnRestart";
+
+            result.after(resultMes);
+
+
+            resultMes.after(restart);   
+        
+            result.setAttribute("disabled","");
+        }
+
+        result.onclick = () =>{
+
+            const group1 = document.getElementsByName("group1");
+            const group2 = document.getElementsByName("group2");
+            const group3 = document.getElementsByName("group3");
+            const group4 = document.getElementsByName("group4");
+            const group5 = document.getElementsByName("group5");
+            
+            const combined = [group1, group2,group3,group4,group5];
+        
+            const trueAnswers = [
             {name:"group1", idTrue:"group1_answer2"},
             {name:"group2", idTrue:"group2_answer1"},
             {name:"group3", idTrue:"group3_answer4"},
@@ -117,8 +160,8 @@
             {name:"group5", idTrue:"group5_answer1"}
             ]
 
-           generateResBlock(answerChecker(combined,trueAnswers),combined.length,btnRes);
-           
+            generateResBlock(answerChecker(combined,trueAnswers),combined.length,result);
+            
         }
         
         

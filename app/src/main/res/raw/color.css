@@ -1,4 +1,4 @@
-.wraper{
+body{
 	background-color: #A9CDDD;
 }
 .content{
@@ -18,4 +18,15 @@ img{
 	max-width: 50%;
 	max-height: 50%;
 	
+}
+#restart,#result{
+	width: 20%;
+	height: 15%;
+	font-weight: bold;
+	background-color: #6BC5A4;
+	margin-top: 5%;
+	cursor: pointer;
+	text-align: center;
+	border: solid 5px #98E0D8;
+	padding: 1%;
 }

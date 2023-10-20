@@ -13,6 +13,7 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -20,28 +21,31 @@ class GeneralActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_general)
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        val exampleFragment = FragmentTheory()
-        fragmentTransaction.replace(R.id.frame_layout, exampleFragment)
-        fragmentTransaction.commit()
+        loadFragment(FragmentTheory())
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.itemIconTintList = null
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.section_theory -> {
                     bottomNavigationView.menu.findItem(R.id.section_theory).isChecked = true;
-                    //Toast.makeText(this,"",Toast.LENGTH_SHORT).show()
+                    bottomNavigationView.menu.findItem(R.id.section_practicle).isChecked = false;
+
+                    loadFragment(FragmentTheory())
                     true
                 }
 
                 R.id.section_practicle -> {
+                    bottomNavigationView.menu.findItem(R.id.section_theory).isChecked = false;
                     bottomNavigationView.menu.findItem(R.id.section_practicle).isChecked = true;
+                    loadFragment(FragmentPracticle())
                     true
                 }
 
                 R.id.section_test -> {
-
+                    loadFragment(FragmentTest())
+                    bottomNavigationView.menu.findItem(R.id.section_theory).isChecked = false;
+                    bottomNavigationView.menu.findItem(R.id.section_test).isChecked = true;
                     true
                 }
 
@@ -49,28 +53,17 @@ class GeneralActivity : AppCompatActivity() {
                 else -> false
             }
         }
-//        var listView = findViewById<ListView>(R.id.listView);
-//        var itemList = listOf<BaseItem>(
-//            BaseItem(R.drawable.item_list,"1. Знакомство с интерфейсом android studio"),
-//            BaseItem(R.drawable.item_list,"2. TextView")
-//        )
-//        var adapter = CustomAdapter(this, itemList);
-//        listView.adapter=adapter;
-//        listView.setOnItemClickListener{
-//            parent, view, position, id ->
-//            when(position){
-//                0->load2("t1.html")
-//                1->Toast.makeText(this,"2",Toast.LENGTH_SHORT).show()
-//                2->Toast.makeText(this,"2",Toast.LENGTH_SHORT).show()
-//            }
-//
-//        }
-//        var nav = ForBottomNavigation(this)
-//        nav.bottomMenu()
-
 
     }
+    private fun changeMarkBottomItem(id:Int){
 
+    }
+    private fun loadFragment(fragment:Fragment){
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frame_layout, fragment)
+        fragmentTransaction.commit()
+    }
 
 
 }

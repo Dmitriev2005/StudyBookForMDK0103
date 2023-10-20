@@ -29,7 +29,8 @@ const funs = {
         resultMes.style.fontWeight = "bold";
         resultMes.style.padding = "1%";
         resultMes.textContent = `Всего верных ответов ${countTrue} из ${countMax}`;
-    
+        
+        
         btnRes.after(resultMes);    
         resultMes.after(btnRestart);   
     

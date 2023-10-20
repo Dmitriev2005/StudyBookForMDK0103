@@ -12,5 +12,6 @@
         android:id="@+id/section_test"
         android:title="Тест"
         android:icon="@drawable/section_test"
+
         />
 </menu>
