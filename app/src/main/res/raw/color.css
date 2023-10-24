@@ -20,13 +20,35 @@ img{
 	
 }
 #restart,#result{
-	width: 20%;
-	height: 15%;
+	
+	
 	font-weight: bold;
 	background-color: #6BC5A4;
 	margin-top: 5%;
 	cursor: pointer;
 	text-align: center;
-	border: solid 5px #98E0D8;
+	border-style: solid;
+	border-color: #98E0D8;
+	border-width: 50%;
+	
 	padding: 1%;
+}
+#messageTrue{
+	border-style: solid;
+	border-color: #8CEC8A;
+	border-width: 15%;
+	background-color: #2EA91A;
+	font-weight: bold;
+	padding: 1%;
+	margin-top: 5%;
+}
+#messageFalse{
+	border-style: solid;
+	border-color: #FD8F8F;
+	border-width: 15%;
+	background-color: #ED3333;
+	font-weight: bold;
+	padding: 1%;
+	margin-top: 5%;
+
 }

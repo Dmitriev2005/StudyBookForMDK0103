@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
 
 
 class FragmentPracticle : Fragment() {
@@ -18,8 +19,30 @@ class FragmentPracticle : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_practicle, container, false)
+        val view = inflater.inflate(R.layout.fragment_theory, container, false)
+        val listView = view.findViewById<ListView>(R.id.listView)
+
+        val itemList = listOf<BaseItem>(
+            BaseItem(R.drawable.item_list, "1. Практическая работа 1")
+        )
+
+        val adapter = CustomAdapter(requireContext(), itemList)
+        listView.adapter = adapter
+        listView.setOnItemClickListener{
+                parent, view, position, id ->
+            when(position){
+                0->load("p1.html")
+            }
+
+        }
+        return view
+    }
+    private fun load(nameHtml:String){
+        val args = Bundle()
+        val fragment = FragmentWebView()
+        args.putString("current_name",nameHtml)
+        fragment.arguments = args
+        fragmentManager?.beginTransaction()?.replace(R.id.frame_layout,fragment)?.commit()
     }
 
 }
