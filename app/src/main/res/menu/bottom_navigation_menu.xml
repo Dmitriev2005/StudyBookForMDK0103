@@ -14,4 +14,10 @@
         android:icon="@drawable/section_test"
 
         />
+    <item
+        android:id="@+id/section_info"
+        android:title="Справка"
+        android:icon="@drawable/section_info"
+
+        />
 </menu>

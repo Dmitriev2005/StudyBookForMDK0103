@@ -48,6 +48,10 @@ class GeneralActivity : AppCompatActivity() {
                     bottomNavigationView.menu.findItem(R.id.section_test).isChecked = true;
                     true
                 }
+                R.id.section_info -> {
+                    loadFragment(FragmentInfo())
+                    true
+                }
 
 
                 else -> false
