@@ -25,6 +25,8 @@ class FragmentTest : Fragment() {
 
         val itemList = listOf<BaseItem>(
             BaseItem(R.drawable.item_list, "1. TextView (Тестирование)"),
+            BaseItem(R.drawable.item_list, "2. Button (Тестирование)"),
+            BaseItem(R.drawable.item_list, "3. ImageView   (Тестирование)"),
         )
 
         val adapter = CustomAdapter(requireContext(), itemList)
@@ -33,6 +35,8 @@ class FragmentTest : Fragment() {
                 parent, view, position, id ->
             when(position){
                 0->load("test1.html")
+                1->load("test2.html")
+                2->load("test3.html")
             }
 
         }

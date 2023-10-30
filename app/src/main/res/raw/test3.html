@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="color.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="content">
+            <h1>ImageView</h1>
+            <div class="question__block">
+                <h2>1. Какой атрибут используется для загрузки изображения в XML-файле для компонента ImageView?</h2>
+                <div class="answer">
+                    <input type="radio" name="group1" id="group1_answer1"/>
+                    <label for="group1_answer1">android:src</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer2"/>
+                    <label for="group1_answer2">app:srcCompat</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer3"/>
+                    <label for="group1_answer3">setImageResource(int resId)</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer4"/>
+                    <label for="group1_answer4">setImageBitmap(Bitmap bitmap)</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>2. Какой метод позволяет загрузить изображение по идентификатору ресурса?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group2" id="group2_answer1"/>
+                    <label for="group2_answer1"> setImageResource(int resId)</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer2"/>
+                    <label for="group2_answer2">setImageBitmap(Bitmap bitmap)</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer3"/>
+                    <label for="group2_answer3">setImageDrawable(Drawable drawable)</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer4"/>
+                    <label for="group2_answer4">setImageURI(Uri uri)</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>3. Каким классом следует воспользоваться для чтения ресурса изображения в объект Bitmap, перед тем как установить его в ImageView?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group3" id="group3_answer1"/>
+                    <label for="group2_answer1"> BitmapFactory</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer2"/>
+                    <label for="group2_answer2">Drawable</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer3"/>
+                    <label for="group2_answer3"> ContextCompat</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer4"/>
+                    <label for="group2_answer4"> ImageView.ScaleType</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>4. Как можно использовать готовое изображение в качестве объекта Drawable для установки в ImageView?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group4" id="group4_answer1"/>
+                    <label for="group2_answer1">setImageResource(int resId)</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer2"/>
+                    <label for="group2_answer2">setImageBitmap(Bitmap bitmap)</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer3"/>
+                    <label for="group2_answer3">setImageDrawable(Drawable drawable)</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer4"/>
+                    <label for="group2_answer4">setImageURI(Uri uri)</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>5. Для какой цели можно использовать метод setImageURI()?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group5" id="group5_answer1"/>
+                    <label for="group2_answer1"> Загрузить изображение по идентификатору ресурса</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer2"/>
+                    <label for="group2_answer2"> Загрузить растровое изображение</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer3"/>
+                    <label for="group2_answer3">Загрузить готовое изображение</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer4"/>
+                    <label for="group2_answer4">Работать с локальными изображениями</label>
+                </div>
+            </div>
+            <div id="result">
+                Проверить
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        //import {answerChecker, generateResBlock} from './test_functions.js';
+        const result = document.getElementById("result");
+       
+        const answerChecker = (group,trueAnswers)=>{
+            let result = 0;
+        
+            for (let i = 0; i < group.length; i++) {
+                for(let j = 0; j< group[i].length; j++){
+                    if(group[i][j].checked && group[i][j].id===trueAnswers[i].idTrue)
+                        result++;
+                }
+                
+            }
+            return result;
+        }
+        const generateResBlock = (countTrue,countMax,result)=>{
+            const restart = document.createElement("div");
+            
+            restart.addEventListener("click",function(){location.reload()})
+        
+            const resultMes = document.createElement("div");
+            if(countTrue===countMax){
+                resultMes.id = "messageTrue";
+            }
+            else{
+                resultMes.id = "messageFalse";
+            }
+           
+            resultMes.textContent = `Всего верных ответов ${countTrue} из ${countMax}`;
+
+            restart.id = "restart";
+            restart.textContent = "Перепройти";
+            result.after(resultMes);
+
+
+            resultMes.after(restart);   
+        
+            result.style.display = "none";
+        }
+
+        result.onclick = () =>{
+
+            const group1 = document.getElementsByName("group1");
+            const group2 = document.getElementsByName("group2");
+            const group3 = document.getElementsByName("group3");
+            const group4 = document.getElementsByName("group4");
+            const group5 = document.getElementsByName("group5");
+            
+            const combined = [group1, group2,group3,group4,group5];
+        
+            const trueAnswers = [
+            {name:"group1", idTrue:"group1_answer1"},
+            {name:"group2", idTrue:"group2_answer1"},
+            {name:"group3", idTrue:"group3_answer1"},
+            {name:"group4", idTrue:"group4_answer3"},
+            {name:"group5", idTrue:"group5_answer4"}
+            ]
+
+            generateResBlock(answerChecker(combined,trueAnswers),combined.length,result);
+            
+        }
+        
+        
+    </script>
+</body>
+</html>

@@ -39,7 +39,15 @@ class FragmentTheory : Fragment() {
 
         val itemList = listOf<BaseItem>(
             BaseItem(R.drawable.item_list, "1. Знакомство с интерфейсом android studio"),
-            BaseItem(R.drawable.item_list, "2. TextView")
+            BaseItem(R.drawable.item_list, "2. Первый проект в Android Studio"),
+            BaseItem(R.drawable.item_list, "3. TextView"),
+            BaseItem(R.drawable.item_list, "4. Button"),
+            BaseItem(R.drawable.item_list, "5. ImageView"),
+            BaseItem(R.drawable.item_list, "6. RecyclerView"),
+            BaseItem(R.drawable.item_list, "7. FragmentContainerView"),
+            BaseItem(R.drawable.item_list, "8. ScrollView"),
+            BaseItem(R.drawable.item_list, "9. View"),
+            BaseItem(R.drawable.item_list, "10. WebView"),
         )
 
         val adapter = CustomAdapter(requireContext(), itemList)
@@ -49,6 +57,10 @@ class FragmentTheory : Fragment() {
             when(position){
                 0->load("t1.html")
                 1->load("t2.html")
+                2->load("t3.html")
+                3->load("t4.html")
+                4->load("t5.html")
+
             }
 
         }

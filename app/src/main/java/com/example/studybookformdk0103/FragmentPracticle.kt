@@ -23,7 +23,22 @@ class FragmentPracticle : Fragment() {
         val listView = view.findViewById<ListView>(R.id.listView)
 
         val itemList = listOf<BaseItem>(
-            BaseItem(R.drawable.item_list, "1. Практическая работа 1")
+            BaseItem(R.drawable.item_list, "1. Практическая работа"),
+            BaseItem(R.drawable.item_list, "2. Практическая работа"),
+            BaseItem(R.drawable.item_list, "3. Практическая работа"),
+            BaseItem(R.drawable.item_list, "4. Практическая работа"),
+            BaseItem(R.drawable.item_list, "5. Практическая работа"),
+            BaseItem(R.drawable.item_list, "6. Практическая работа"),
+            BaseItem(R.drawable.item_list, "7. Практическая работа"),
+            BaseItem(R.drawable.item_list, "8. Практическая работа"),
+            BaseItem(R.drawable.item_list, "9. Практическая работа"),
+            BaseItem(R.drawable.item_list, "10. Практическая работа"),
+            BaseItem(R.drawable.item_list, "11. Практическая работа"),
+            BaseItem(R.drawable.item_list, "12. Практическая работа"),
+            BaseItem(R.drawable.item_list, "13. Практическая работа"),
+            BaseItem(R.drawable.item_list, "14. Практическая работа"),
+            BaseItem(R.drawable.item_list, "15. Практическая работа"),
+            BaseItem(R.drawable.item_list, "16 . Практическая работа")
         )
 
         val adapter = CustomAdapter(requireContext(), itemList)
@@ -31,7 +46,22 @@ class FragmentPracticle : Fragment() {
         listView.setOnItemClickListener{
                 parent, view, position, id ->
             when(position){
-                0->load("p1.html")
+                0->load("p1.htm")
+                1->load("p2.htm")
+                2->load("p3.htm")
+                3->load("p4.htm")
+                4->load("p5.htm")
+                5->load("p6.htm")
+                6->load("p7.htm")
+                7->load("p8.htm")
+                8->load("p9.htm")
+                9->load("p10.htm")
+                10->load("p11.htm")
+                11->load("p12.htm")
+                12->load("p13.htm")
+                13->load("p14.htm")
+                14->load("p15.htm")
+                15->load("p16.htm")
             }
 
         }

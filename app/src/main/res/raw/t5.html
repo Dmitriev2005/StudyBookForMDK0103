@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="color.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="content">
+            <h1>ImageView</h1>
+            <h2>Общая информация</h2>
+            <p>
+                Компонент ImageView предназначен для отображения изображений. Находится в разделе Widgets.
+            </p>
+            <p>
+                Для загрузки изображения в XML-файле используется атрибут android:src, в последнее время чаще используется атрибут <strong>app:srcCompat</strong>.
+            </p>
+            <p>
+                <strong>ImageView</strong> является базовым элементом-контейнером для использования графики. Можно загружать изображения из разных источников, например, из ресурсов программы, контент-провайдеров. В классе <strong>ImageView</strong> существует несколько методов для загрузки изображений:   
+            </p>
+            <ul>
+                <li><strong>setImageResource(int resId)</strong> — загружает изображение по идентификатору ресурса</li>
+                <li><strong>setImageBitmap(Bitmap bitmap)</strong> — загружает растровое изображение</li> 
+                <li><strong>setImageDrawable(Drawable drawable)</strong> - загружает готовое изображение</li>
+                <li><strong>setImageURI(Uri uri)</strong> — загружает изображение по его URI</li>
+            </ul>
+            <h2>Метод setImageResource()</h2>
+            <p>Сначала нужно получить ссылку на ImageView, а затем используется идентификатор изображения из ресурсов:</p>
+            <div class="code__container">
+                val imageView = findViewById&lt;ImageView&gt;(R.id.imageView);
+                <br>
+                imageView.setImageResource(R.drawable.cat);
+            </div>
+            <h2>Метод setImageBitmap()</h2>
+            <p>
+                Используется класс <strong>BitmapFactory</strong> для чтения ресурса изображения в объект <strong>Bitmap</strong>, а затем в <strong>ImageView</strong> указывается полученный Bitmap. Могут быть и другие варианты.
+            </p>
+            <div class="code__container">
+                val bitmap: Bitmap = (ResourcesCompat.getDrawable(
+                    <br>
+                resources,R.drawable.sleepbedcat,null)
+                <br>
+                    as BitmapDrawable).bitmap
+                    <br>
+                imageView.setImageBitmap(bitmap)
+            </div>
+            <h2>Метод setImageDrawable()</h2>
+            <p>Если у вас есть готовое изображение, например, на SD-карте, то его можно использовать в качестве объекта Drawable.</p>
+            <p>
+                <strong>Drawable</strong> можно получить и из ресурсов, хотя такой код выглядит избыточным, если можно сразу вызвать <strong>setImageResource()</strong>.
+            </p>
+            <div class="code__container">
+                val imageView: ImageView = findViewById(R.id.imageView)
+                <br>
+                imageView.setImageDrawable(
+                <br>
+                    ContextCompat.getDrawable(this, R.drawable.cat)
+                <br>
+                )
+            </div>
+            <h2>Метод setImageURI()</h2>
+            <p>
+                Берётся <strong>URI</strong> файла изображения и используется в качестве источника изображения. Этот способ годится для работы с локальными изображениями.
+            </p>
+            <div class="code__container">
+                val imageView: ImageView = findViewById(R.id.imageView)
+                <br>
+                val button: Button = findViewById(R.id.button)
+                <br>
+                button.setOnClickListener {
+                <br>
+                    val uri: Uri = Uri.parse("android.resource://$packageName/${R.drawable.cat}")
+                <br>
+                    imageView.setImageURI(null)
+                <br>
+                    imageView.setImageURI(uri)
+                <br>
+                    textView.text = uri.toString()
+                }
+            </div>
+            <h2>
+                Другие методы
+            </h2>
+            <p>
+                Также вам часто придется использовать методы, связанные с размерами и масштабированием: <strong>setMaxHeight(), setMaxWidth(), getMinimunHeight(), getMinimunWidth(), getScaleType(), setScaleType()</strong>.
+            </p>
+            <h2>
+                Масштабирование через свойство Scale Type
+            </h2>
+            <p>
+                Для масштабирования картинки в <strong>ImageView</strong> есть свойство <strong>Scale Type</strong> и соответствующий ему атрибут <strong>android:scaleType</strong> и перечисление <strong>ImageView.ScaleType</strong>.
+            </p>
+            <div class="code__container">
+                
+            </div>
+        </div>
+    </div>
+   
+</body>
+</html>
