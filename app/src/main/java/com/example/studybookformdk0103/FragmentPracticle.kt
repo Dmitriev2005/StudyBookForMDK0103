@@ -38,7 +38,10 @@ class FragmentPracticle : Fragment() {
             BaseItem(R.drawable.item_list, "13. Практическая работа"),
             BaseItem(R.drawable.item_list, "14. Практическая работа"),
             BaseItem(R.drawable.item_list, "15. Практическая работа"),
-            BaseItem(R.drawable.item_list, "16 . Практическая работа")
+            BaseItem(R.drawable.item_list, "16 . Практическая работа"),
+            BaseItem(R.drawable.item_list, "17 . Практическая работа"),
+            BaseItem(R.drawable.item_list, "18 . Практическая работа"),
+            BaseItem(R.drawable.item_list, "19 . Практическая работа"),
         )
 
         val adapter = CustomAdapter(requireContext(), itemList)
@@ -62,6 +65,9 @@ class FragmentPracticle : Fragment() {
                 13->load("p14.htm")
                 14->load("p15.htm")
                 15->load("p16.htm")
+                16->load("p17.htm")
+                17->load("p18.htm")
+                18->load("p19.htm")
             }
 
         }
