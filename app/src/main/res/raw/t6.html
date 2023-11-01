@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="color.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="container">
+            <h1>RecyclerView</h1>
+            <p>
+                Компонент <strong>RecyclerView</strong> появился в Android 5.0 Lollipop и находится в разделе <strong>Containers</strong>. Для простоты буду называть его списком, хотя на самом деле это универсальный элемент управления с большими возможностями.
+            </p>
+            <p>
+                Раньше для отображения прокручиваемого списка использовался <strong>ListView</strong>. Со временем у него обнаружилось множество недостатков, которые было трудно исправить. Тогда решили создать новый элемент с нуля.
+            </p>
+            <p>
+                Вначале это был сырой продукт, потом его доработали. На данном этапе можно считать, что он стал полноценной заменой устаревшего <strong>ListView</strong>.
+            </p>
+            <p>
+                Схематично работу <strong>RecyclerView можно представить следующим образом. На экране отображаются видимые элементы списка. Когда при прокрутке списка верхний элемент уходит за пределы экрана и становится невидимым, его содержимое очищается. При этом сам "чистый" элемент помещается вниз экрана и заполняется новыми данными, иными словами переиспользуется, отсюда название <strong>Recycle</strong>.
+            </p>
+            <p>
+                Компонент <strong>RecyclerView</strong> не является родственником <strong>ListView</strong> и относится к семейству <strong>ViewGroup</strong>. Он часто используется как замена <strong>ListView</strong>, но его возможности шире.
+            </p>
+            <p>
+                Внешний вид можно представить не только в виде обычного списка, но и в виде сетки. При необходимости можно быстро переключиться между разными типами отображения.
+            </p>
+            <p>
+                Для размещения своих дочерних элементов используется специальный менеджер макетов <strong>LayoutManager</strong>. Он может быть трёх видов.
+            </p>
+            <ul>
+                <li><strong>LinearLayoutManager</strong> - дочерние элементы размещаются вертикально (как в ListView) или горизонтально</li>
+                <li><strong>GridLayoutManager</strong> - дочерние элементы размещаются в сетке, как в <strong>GridView</strong></li>
+                <li><strong>StaggeredGridLayoutManager</strong> - неравномерная сетка</li>
+            </ul>
+            <p>
+                Можно создать собственный менеджер на основе <strong>RecyclerView.LayoutManager</strong>.
+            </p>
+            <p>
+                <strong>RecyclerView.ItemDecoration</strong> позволяет работать с дочерними элементами: отступы, внешний вид.
+            </p>
+            <p>
+                <strong>ItemAnimator</strong> - отвечает за анимацию элементов при добавлении, удалении и других операций.
+            </p>
+            <p>
+                <strong>RecyclerView.Adapter</strong> связывает данные с компонентом и отслеживает изменения.
+            </p>
+            <ul>
+                <li><strong>notifyItemInserted(), notifyItemRemoved(), notifyItemChanged()</strong> - методы, отслеживающие добавление, удаление или изменение позиции одного элемента</li>
+                <li><strong>notifyItemRangeInserted(), notifyItemRangeRemoved(), notifyItemRangeChanged()</strong> - методы, отслеживающие изменение порядка элеметов</li>
+            </ul>
+            <p>
+                Стандартный метод <strong>notifyDataSetChanged()</strong> поддерживается, но он не приводит к внешнему изменению элементов на экране.
+            </p>
+           <h2>getItemCount()</h2>
+           <p>
+            Возвращает количество элементов списка. Как правило данные являются однотипными, например, список или массив строк. Адаптеру нужно знать, сколько элементов нужно предоставить компоненту, чтобы распределить ресурсы и подготовиться к отображению на экране. При работе с коллекциями или массивом мы можем просто вычислить его длину и передать это значение методу адаптера <strong>getItemCount()</strong>. В простых случаях мы можем записать код в одну строчку.
+           </p>
+           <div class="code__container">
+            override fun getItemCount(): Int {
+                <br>
+                return names.size
+                <br>
+            }
+
+           </div>
+           <h2>onCreateViewHolder</h2>
+        </div>
+    </div>
+</body>
+</html>

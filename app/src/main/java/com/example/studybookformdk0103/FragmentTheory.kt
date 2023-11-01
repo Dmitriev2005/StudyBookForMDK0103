@@ -60,6 +60,11 @@ class FragmentTheory : Fragment() {
                 2->load("t3.html")
                 3->load("t4.html")
                 4->load("t5.html")
+                5->load("t6.html")
+                6->load("t7.html")
+                7->load("t8.html")
+                8->load("t9.html")
+                9->load("t10.html")
 
             }
 

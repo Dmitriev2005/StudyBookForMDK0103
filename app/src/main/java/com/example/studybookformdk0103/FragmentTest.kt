@@ -27,7 +27,14 @@ class FragmentTest : Fragment() {
             BaseItem(R.drawable.item_list, "1. TextView (Тестирование)"),
             BaseItem(R.drawable.item_list, "2. Button (Тестирование)"),
             BaseItem(R.drawable.item_list, "3. ImageView   (Тестирование)"),
+            BaseItem(R.drawable.item_list, "4. RecyclerView   (Тестирование)"),
+            BaseItem(R.drawable.item_list, "5. FragmentContainerView"),
+            BaseItem(R.drawable.item_list, "6. ScrollView"),
+            BaseItem(R.drawable.item_list, "7. View"),
+            BaseItem(R.drawable.item_list, "8. WebView")
+
         )
+
 
         val adapter = CustomAdapter(requireContext(), itemList)
         listView.adapter = adapter
@@ -37,6 +44,11 @@ class FragmentTest : Fragment() {
                 0->load("test1.html")
                 1->load("test2.html")
                 2->load("test3.html")
+                3->load("test4.html")
+                4->load("test5.html")
+                5->load("test6.html")
+                6->load("test7.html")
+                7->load("test8.html")
             }
 
         }

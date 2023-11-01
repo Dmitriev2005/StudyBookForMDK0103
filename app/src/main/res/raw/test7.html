@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="color.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="content">
+            <h1>RecyclerView</h1>
+            <div class="question__block">
+                <h2>1. Что представляет собой компонент View в Android?</h2>
+                <div class="answer">
+                    <input type="radio" name="group1" id="group1_answer1"/>
+                    <label for="group1_answer1">Основной класс для работы с базовыми данными</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer2"/>
+                    <label for="group1_answer2"> Основной элемент пользовательского интерфейса</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer3"/>
+                    <label for="group1_answer3">Средство для хранения данных</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer4"/>
+                    <label for="group1_answer4">Фрагмент приложения</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>2. Какие виджеты могут быть построены на базе компонента View?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group2" id="group2_answer1"/>
+                    <label for="group2_answer1">Только кнопки</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer2"/>
+                    <label for="group2_answer2"> Только изображения</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer3"/>
+                    <label for="group2_answer3"> Различные элементы, такие как кнопки, текстовые поля и изображения</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer4"/>
+                    <label for="group2_answer4">Только текстовые поля</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>3. Для чего используется компонент View в Android?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group3" id="group3_answer1"/>
+                    <label for="group2_answer1">Для выполнения вычислений</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer2"/>
+                    <label for="group2_answer2"> Для взаимодействия с базой данных</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer3"/>
+                    <label for="group2_answer3">Для отображения графики, текста и взаимодействия с пользователем</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer4"/>
+                    <label for="group2_answer4"> Для управления сетевыми соединениями</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>4. Какие задачи могут быть выполнены с использованием компонента View?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group4" id="group4_answer1"/>
+                    <label for="group2_answer1">Отображение графики и текста, а также взаимодействие с пользователем</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer2"/>
+                    <label for="group2_answer2"> Изменение настроек операционной системы</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer3"/>
+                    <label for="group2_answer3">Управление памятью устройства</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer4"/>
+                    <label for="group2_answer4">Выполнение аутентификации пользователя</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>5.Какой компонент Android представляет собой базовый элемент для построения различных виджетов?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group5" id="group5_answer1"/>
+                    <label for="group2_answer1">Fragment</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer2"/>
+                    <label for="group2_answer2">  Intent</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer3"/>
+                    <label for="group2_answer3">View</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer4"/>
+                    <label for="group2_answer4"> Activity</label>
+                </div>
+            </div>
+            <div id="result">
+                Проверить
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        //import {answerChecker, generateResBlock} from './test_functions.js';
+        const result = document.getElementById("result");
+       
+        const answerChecker = (group,trueAnswers)=>{
+            let result = 0;
+        
+            for (let i = 0; i < group.length; i++) {
+                for(let j = 0; j< group[i].length; j++){
+                    if(group[i][j].checked && group[i][j].id===trueAnswers[i].idTrue)
+                        result++;
+                }
+                
+            }
+            return result;
+        }
+        const generateResBlock = (countTrue,countMax,result)=>{
+            const restart = document.createElement("div");
+            
+            restart.addEventListener("click",function(){location.reload()})
+        
+            const resultMes = document.createElement("div");
+            if(countTrue===countMax){
+                resultMes.id = "messageTrue";
+            }
+            else{
+                resultMes.id = "messageFalse";
+            }
+           
+            resultMes.textContent = `Всего верных ответов ${countTrue} из ${countMax}`;
+
+            restart.id = "restart";
+            restart.textContent = "Перепройти";
+            result.after(resultMes);
+
+
+            resultMes.after(restart);   
+        
+            result.style.display = "none";
+        }
+
+        result.onclick = () =>{
+
+            const group1 = document.getElementsByName("group1");
+            const group2 = document.getElementsByName("group2");
+            const group3 = document.getElementsByName("group3");
+            const group4 = document.getElementsByName("group4");
+            const group5 = document.getElementsByName("group5");
+            
+            const combined = [group1, group2,group3,group4,group5];
+        
+            const trueAnswers = [
+            {name:"group1", idTrue:"group1_answer2"},
+            {name:"group2", idTrue:"group2_answer3"},
+            {name:"group3", idTrue:"group3_answer3"},
+            {name:"group4", idTrue:"group4_answer1"},
+            {name:"group5", idTrue:"group5_answer3"}
+            ]
+
+            generateResBlock(answerChecker(combined,trueAnswers),combined.length,result);
+            
+        }
+        
+        
+    </script>
+</body>
+</html>

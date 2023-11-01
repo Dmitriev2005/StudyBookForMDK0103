@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="color.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wraper">
+        <div class="content">
+            <h1>WebView</h1>
+            <div class="question__block">
+                <h2>1. Что представляет собой компонент WebView в Android?</h2>
+                <div class="answer">
+                    <input type="radio" name="group1" id="group1_answer1"/>
+                    <label for="group1_answer1">Элемент управления для выбора даты и времени</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer2"/>
+                    <label for="group1_answer2"> Контейнер для создания списков</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer3"/>
+                    <label for="group1_answer3">Виджет для отображения веб-страниц и взаимодействия с веб-содержимым</label>
+                    <br/>
+                    <input type="radio"  name="group1" id="group1_answer4"/>
+                    <label for="group1_answer4">Визуальный редактор макета</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>2. Какие функции предоставляет WebView в Android?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group2" id="group2_answer1"/>
+                    <label for="group2_answer1">Воспроизведение видеофайлов</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer2"/>
+                    <label for="group2_answer2"> Отображение веб-страниц, выполнение JavaScript, обработка событий и другие операции, связанные с веб-содержимым</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer3"/>
+                    <label for="group2_answer3"> Запуск приложений</label>
+                    <br/>
+                    <input type="radio"  name="group2" id="group2_answer4"/>
+                    <label for="group2_answer4"> Работа с камерой устройства</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>3. Как загрузить веб-страницу в WebView программно?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group3" id="group3_answer1"/>
+                    <label for="group2_answer1">loadUrl("https://www.example.com")</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer2"/>
+                    <label for="group2_answer2"> setWebPage("https://www.example.com")/label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer3"/>
+                    <label for="group2_answer3">openPage("https://www.example.com")</label>
+                    <br/>
+                    <input type="radio"  name="group3" id="group3_answer4"/>
+                    <label for="group2_answer4"> navigateTo("https://www.example.com")</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>4. Как обрабатывать события, происходящие на веб-странице внутри WebView?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group4" id="group4_answer1"/>
+                    <label for="group2_answer1">В WebView нельзя обрабатывать события</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer2"/>
+                    <label for="group2_answer2"> События на веб-странице обрабатываются автоматически, не требуя дополнительного кода</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer3"/>
+                    <label for="group2_answer3">Используя JavaScript</label>
+                    <br/>
+                    <input type="radio"  name="group4" id="group4_answer4"/>
+                    <label for="group2_answer4"> С помощью метода handleEvents()</label>
+                </div>
+            </div>
+            <div class="question__block">
+                <h2>5. Что представляет собой метод goBack() в WebView?</h2>
+                <div class="answer">
+                    <input type="radio"  name="group5" id="group5_answer1"/>
+                    <label for="group2_answer1"> Метод для загрузки следующей веб-страницы</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer2"/>
+                    <label for="group2_answer2">  Метод для перехода на домашнюю страницу</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer3"/>
+                    <label for="group2_answer3">Метод для возврата на предыдущую веб-страницу</label>
+                    <br/>
+                    <input type="radio"  name="group5" id="group5_answer4"/>
+                    <label for="group2_answer4"> Метод для открытия новой вкладки в браузере</label>
+                </div>
+            </div>
+            <div id="result">
+                Проверить
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        //import {answerChecker, generateResBlock} from './test_functions.js';
+        const result = document.getElementById("result");
+       
+        const answerChecker = (group,trueAnswers)=>{
+            let result = 0;
+        
+            for (let i = 0; i < group.length; i++) {
+                for(let j = 0; j< group[i].length; j++){
+                    if(group[i][j].checked && group[i][j].id===trueAnswers[i].idTrue)
+                        result++;
+                }
+                
+            }
+            return result;
+        }
+        const generateResBlock = (countTrue,countMax,result)=>{
+            const restart = document.createElement("div");
+            
+            restart.addEventListener("click",function(){location.reload()})
+        
+            const resultMes = document.createElement("div");
+            if(countTrue===countMax){
+                resultMes.id = "messageTrue";
+            }
+            else{
+                resultMes.id = "messageFalse";
+            }
+           
+            resultMes.textContent = `Всего верных ответов ${countTrue} из ${countMax}`;
+
+            restart.id = "restart";
+            restart.textContent = "Перепройти";
+            result.after(resultMes);
+
+
+            resultMes.after(restart);   
+        
+            result.style.display = "none";
+        }
+
+        result.onclick = () =>{
+
+            const group1 = document.getElementsByName("group1");
+            const group2 = document.getElementsByName("group2");
+            const group3 = document.getElementsByName("group3");
+            const group4 = document.getElementsByName("group4");
+            const group5 = document.getElementsByName("group5");
+            
+            const combined = [group1, group2,group3,group4,group5];
+        
+            const trueAnswers = [
+            {name:"group1", idTrue:"group1_answer3"},
+            {name:"group2", idTrue:"group2_answer2"},
+            {name:"group3", idTrue:"group3_answer1"},
+            {name:"group4", idTrue:"group4_answer3"},
+            {name:"group5", idTrue:"group5_answer3"}
+            ]
+
+            generateResBlock(answerChecker(combined,trueAnswers),combined.length,result);
+            
+        }
+        
+        
+    </script>
+</body>
+</html>
